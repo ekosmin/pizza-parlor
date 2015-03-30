@@ -4,6 +4,7 @@ module Main {
     export class Preloader extends Phaser.State {
 
         preload() {
+            this.load.image('pizza', 'assets/pizza.png');
         }
 
         create() {
