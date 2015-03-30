@@ -1,5 +1,5 @@
 ///<reference path="build/typescript/phaser.d.ts"/>
-///<reference path="Pizza.ts"/>
+///<reference path="pizza/Pizza.ts"/>
 module Main {
 
     export class Level extends Phaser.State {
