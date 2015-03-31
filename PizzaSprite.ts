@@ -1,4 +1,6 @@
 ///<reference path="build/typescript/phaser.d.ts"/>
+///<reference path="Level.ts"/>
+
 module Main {
 
     export class PizzaSprite extends Phaser.Sprite {

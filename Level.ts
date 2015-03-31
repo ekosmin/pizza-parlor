@@ -7,8 +7,10 @@ module Main {
         pizza: Pizza;
 
         create() {
+            var levelGroup: Phaser.Group = this.game.add.group();
 
             this.pizza = new Pizza(this);
+            levelGroup.add(this.pizza);
         }
 
     }
