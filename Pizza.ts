@@ -24,7 +24,7 @@ module Main {
 
             this.x = Pizza.START_POINT.x;
             this.y = Pizza.START_POINT.y;
-            this.setAmount(11);
+            this.setAmount(1);
         }
 
         public update(): void {
