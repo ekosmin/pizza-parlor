@@ -7,6 +7,8 @@ module Main {
 
         private level: Level;
 
+        public isServed: boolean = false;
+
         // Used for dragging the full group
         mouseDragStart: Phaser.Point;
         groupDragStart: Phaser.Point;
@@ -16,8 +18,7 @@ module Main {
             super(level.game);
             this.level = level;
 
-            this.add(new PizzaSprite(level, 0, 0));
-            this.add(new PizzaSprite(level, 50, 0));
+            this.add(new PizzaSprite(level, this, 100, 415));
         }
 
         public update(): void {

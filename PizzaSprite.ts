@@ -6,10 +6,12 @@ module Main {
     export class PizzaSprite extends Phaser.Sprite {
 
         private level: Level;
+        private parentGroup: Pizza;
 
-        constructor(level:Level, x:number, y:number) {
+        constructor(level:Level, parent: Pizza, x:number, y:number) {
             super(level.game, x, y, 'pizza', 0);
             this.level = level;
+            this.parentGroup = parent;
 
             this.inputEnabled = true;
 
@@ -18,11 +20,11 @@ module Main {
         }
 
         private onDragStart(): void {
-            this.level.pizza.onDragStart();
+            this.parentGroup.onDragStart();
         }
 
         private onDragStop(): void {
-            this.level.pizza.onDragStop();
+            this.parentGroup.onDragStop();
         }
     }
 }
