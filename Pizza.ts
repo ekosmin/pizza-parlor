@@ -8,6 +8,10 @@ module Main {
         private level: Level;
 
         public isServed: boolean = false;
+        public amount: number;
+
+        private static START_POINT: Phaser.Point = new Phaser.Point(100, 415);
+        private static HEIGHT: number = 15;
 
         // Used for dragging the full group
         mouseDragStart: Phaser.Point;
@@ -18,7 +22,9 @@ module Main {
             super(level.game);
             this.level = level;
 
-            this.add(new PizzaSprite(level, this, 100, 415));
+            this.x = Pizza.START_POINT.x;
+            this.y = Pizza.START_POINT.y;
+            this.setAmount(11);
         }
 
         public update(): void {
@@ -41,6 +47,14 @@ module Main {
 
         public onDragStop(): void {
             this.isDragged = false;
+        }
+
+        public setAmount(amount: number): void {
+            this.amount = amount;
+
+            for (var i: number = 0; i < amount; i++) {
+                this.add(new PizzaSprite(this.level, this, 0, i * -Pizza.HEIGHT));
+            }
         }
     }
 }
