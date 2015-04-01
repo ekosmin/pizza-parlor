@@ -19,7 +19,7 @@ module Main {
             this.levelGroup = this.game.add.group();
 
             this.levelGroup.add(new PizzaMaker(this, -100, 0));
-            this.levelGroup.add(new PizzaMultiplier(this, 350, 50));
+            this.levelGroup.add(new PizzaMultiplier(2, this, 350, 50));
 
             this.pizzas = new Phaser.Group(this.game);
             this.levelGroup.add(this.pizzas);

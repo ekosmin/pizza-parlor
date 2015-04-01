@@ -13,8 +13,9 @@ module Main {
             this.level = level;
             this.parentGroup = parent;
 
-            this.inputEnabled = true;
+            this.level.game.physics.enable(this, Phaser.Physics.ARCADE);
 
+            this.inputEnabled = true;
             this.events.onInputDown.add(this.onDragStart, this);
             this.events.onInputUp.add(this.onDragStop, this);
         }
