@@ -1,36 +1,28 @@
 ///<reference path="build/typescript/phaser.d.ts"/>
+///<reference path="PizzaSprite.ts"/>
 ///<reference path="Level.ts"/>
-///<reference path="Pizza.ts"/>
+///<reference path="MultiplierMachine.ts"/>
+///<reference path="MultiplierButton.ts"/>
 module Main {
 
-    export class PizzaMultiplier extends Phaser.Sprite {
+    export class PizzaMultiplier extends Phaser.Group {
 
-        private level: Level;
+        private machine: MultiplierMachine;
+        private button: MultiplierButton;
 
-        private multiplier: number;
+        private static BUTTON_OFFSET: number = 50;
 
-        private static WIDTH = 600;
+        constructor(multiplier: number, level: Level, x: number, y: number) {
+            super(level.game);
+            this.x = x;
+            this.y = y;
 
-        constructor(multiplier: number, level:Level, x:number, y:number) {
-            super(level.game, x, y, 'multiplier', 1);
-            this.level = level;
-            this.multiplier = multiplier;
+            this.machine = new MultiplierMachine(multiplier, level, 0, 0);
+            this.button = new MultiplierButton(this.machine, level,
+                this.machine.width/2 - PizzaMultiplier.BUTTON_OFFSET, this.machine.height/2);
 
-            this.level.game.physics.enable(this, Phaser.Physics.ARCADE);
-            this.body.setSize(200, 100, 0, 75);
-
-            this.inputEnabled = true;
-            this.events.onInputDown.add(this.multiplyPizza, this);
-        }
-
-        private multiplyPizza(): void {
-            for (var i: number = 0; i < this.level.pizzas.length; i++) {
-                var pizza: Pizza = this.level.pizzas.getAt(i);
-                if (this.level.physics.arcade.overlap(pizza, this)) {
-                    pizza.setAmount(pizza.amount * this.multiplier);
-                    pizza.x = this.x + PizzaMultiplier.WIDTH;
-                }
-            }
+            this.add(this.machine);
+            this.add(this.button);
         }
 
     }

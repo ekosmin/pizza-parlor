@@ -8,6 +8,7 @@ module Main {
             this.load.image('pizzaMaker', 'assets/pizzaMaker.png');
             this.load.image('multiplier', 'assets/multiplier.png');
             this.load.image('level1', 'assets/level1.png');
+            this.load.image('multiplierButton', 'assets/multiplierButton.png');
         }
 
         create() {

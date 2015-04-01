@@ -12,7 +12,6 @@ module Main {
             this.level = level;
 
             this.inputEnabled = true;
-
             this.events.onInputDown.add(this.makePizza, this);
         }
 
