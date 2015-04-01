@@ -1,6 +1,6 @@
-///<reference path="build/typescript/phaser.d.ts"/>
-///<reference path="Level.ts"/>
-///<reference path="Pizza.ts"/>
+///<reference path="../build/typescript/phaser.d.ts"/>
+///<reference path="../Level.ts"/>
+///<reference path="../pizza/Pizza.ts"/>
 module Main {
 
     export class MultiplierButton extends Phaser.Sprite {

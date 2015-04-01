@@ -1,5 +1,5 @@
-///<reference path="build/typescript/phaser.d.ts"/>
-///<reference path="Level.ts"/>
+///<reference path="../build/typescript/phaser.d.ts"/>
+///<reference path="../Level.ts"/>
 
 module Main {
 

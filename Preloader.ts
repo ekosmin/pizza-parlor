@@ -9,6 +9,7 @@ module Main {
             this.load.image('multiplier', 'assets/multiplier.png');
             this.load.image('level1', 'assets/level1.png');
             this.load.image('multiplierButton', 'assets/multiplierButton.png');
+            this.load.image('makerButton', 'assets/makerButton.png');
         }
 
         create() {

@@ -1,6 +1,6 @@
-///<reference path="build/typescript/phaser.d.ts"/>
-///<reference path="PizzaSprite.ts"/>
-///<reference path="Level.ts"/>
+///<reference path="../build/typescript/phaser.d.ts"/>
+///<reference path="../pizza/PizzaSprite.ts"/>
+///<reference path="../Level.ts"/>
 ///<reference path="MultiplierMachine.ts"/>
 ///<reference path="MultiplierButton.ts"/>
 module Main {
