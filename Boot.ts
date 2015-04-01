@@ -1,4 +1,4 @@
-///<reference path="build/typescript/phaser.d.ts"/>
+///<reference path="phaser/typescript/phaser.d.ts"/>
 module Main {
 
     export class Boot extends Phaser.State {

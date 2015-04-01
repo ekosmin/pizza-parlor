@@ -1,4 +1,4 @@
-///<reference path="build/typescript/phaser.d.ts"/>
+///<reference path="phaser/typescript/phaser.d.ts"/>
 ///<reference path="Boot.ts"/>
 ///<reference path="Preloader.ts"/>
 ///<reference path="Level.ts"/>

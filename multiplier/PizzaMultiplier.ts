@@ -1,4 +1,4 @@
-///<reference path="../build/typescript/phaser.d.ts"/>
+///<reference path="../phaser/typescript/phaser.d.ts"/>
 ///<reference path="../pizza/PizzaSprite.ts"/>
 ///<reference path="../Level.ts"/>
 ///<reference path="MultiplierMachine.ts"/>
