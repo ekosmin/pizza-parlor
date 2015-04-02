@@ -10,8 +10,6 @@ module Main {
 
         private multiplier: number;
 
-        private static WIDTH = 600;
-
         constructor(multiplier: number, level:Level, x:number, y:number) {
             super(level.game, x, y, 'multiplier');
             this.level = level;
@@ -26,7 +24,7 @@ module Main {
                 var pizza: Pizza = this.level.pizzas.getAt(i);
                 if (this.level.physics.arcade.overlap(pizza, this)) {
                     pizza.setAmount(pizza.amount * this.multiplier);
-                    pizza.x = this.parent.x + MultiplierMachine.WIDTH;
+                    pizza.x = this.parent.x + this.width - Pizza.WIDTH * 2;
                 }
             }
         }
