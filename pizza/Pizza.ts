@@ -11,7 +11,10 @@ module Main {
         public isServed: boolean = false;
         public amount: number;
 
-        private static START_POINT: Phaser.Point = new Phaser.Point(100, 415);
+        private static START_POINT: Phaser.Point = new Phaser.Point(55, 415);
+        private static MASK_OFFSET: Phaser.Point = new Phaser.Point(50, 31);
+
+        private static WIDTH: number = 90;
         private static HEIGHT: number = 15;
 
         // Used for dragging the full group
@@ -57,15 +60,16 @@ module Main {
             var wholePizzas: number = Math.floor(amount);
 
             for (var i: number = 0; i < wholePizzas; i++) {
-                this.add(new PizzaSprite(this.level, this, -45, i * -Pizza.HEIGHT));
+                this.add(new PizzaSprite(this.level, this, 0, i * -Pizza.HEIGHT));
             }
 
             var remainder: number = amount - wholePizzas;
             if (remainder != 0) {
-                var fractionalPizza: PizzaSprite = new PizzaSprite(this.level, this, 45, 0);
+                var fractionalPizza: PizzaSprite = new PizzaSprite(this.level, this, Pizza.WIDTH, 0);
                 this.add(fractionalPizza);
 
-                var mask: PizzaMask = new PizzaMask(amount - wholePizzas, this.level, 95, 31);
+                var mask: PizzaMask = new PizzaMask(amount - wholePizzas, this.level,
+                    fractionalPizza.x + Pizza.MASK_OFFSET.x, Pizza.MASK_OFFSET.y);
                 fractionalPizza.mask = mask;
                 this.add(mask);
             }
