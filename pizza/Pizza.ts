@@ -1,5 +1,6 @@
 ///<reference path="../phaser/typescript/phaser.d.ts"/>
 ///<reference path="PizzaSprite.ts"/>
+///<reference path="PizzaMask.ts"/>
 ///<reference path="../Level.ts"/>
 module Main {
 
@@ -24,7 +25,7 @@ module Main {
 
             this.x = Pizza.START_POINT.x;
             this.y = Pizza.START_POINT.y;
-            this.setAmount(1);
+            this.setAmount(1.5);
         }
 
         public update(): void {
@@ -51,9 +52,22 @@ module Main {
 
         public setAmount(amount: number): void {
             this.amount = amount;
+            this.removeAll(true);
 
-            for (var i: number = 0; i < amount; i++) {
-                this.add(new PizzaSprite(this.level, this, 0, i * -Pizza.HEIGHT));
+            var wholePizzas: number = Math.floor(amount);
+
+            for (var i: number = 0; i < wholePizzas; i++) {
+                this.add(new PizzaSprite(this.level, this, -45, i * -Pizza.HEIGHT));
+            }
+
+            var remainder: number = amount - wholePizzas;
+            if (remainder != 0) {
+                var fractionalPizza: PizzaSprite = new PizzaSprite(this.level, this, 45, 0);
+                this.add(fractionalPizza);
+
+                var mask: PizzaMask = new PizzaMask(amount - wholePizzas, this.level, 95, 31);
+                fractionalPizza.mask = mask;
+                this.add(mask);
             }
         }
     }

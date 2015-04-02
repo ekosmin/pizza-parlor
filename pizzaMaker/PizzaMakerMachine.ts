@@ -8,7 +8,7 @@ module Main {
         private level: Level;
 
         constructor(level:Level, x:number, y:number) {
-            super(level.game, x, y, 'pizzaMaker', 1);
+            super(level.game, x, y, 'pizzaMaker');
             this.level = level;
         }
 
