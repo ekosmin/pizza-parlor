@@ -62,6 +62,10 @@ module Main {
                 this.add(new PizzaSprite(this.level, this, 0, i * -Pizza.HEIGHT));
             }
 
+            var style = { font: "15px Arial", fill: "#ffffff", align: "center" };
+            this.add(new Phaser.Text(this.level.game, Pizza.WIDTH/2, wholePizzas * -Pizza.HEIGHT,
+                "" + wholePizzas, style));
+
             var remainder: number = amount - wholePizzas;
             if (remainder != 0) {
                 var fractionalPizza: PizzaSprite = new PizzaSprite(this.level, this, Pizza.WIDTH, 0);
@@ -71,6 +75,8 @@ module Main {
                     fractionalPizza.x + Pizza.MASK_OFFSET.x, Pizza.MASK_OFFSET.y);
                 fractionalPizza.mask = mask;
                 this.add(mask);
+
+                this.add(new Phaser.Text(this.level.game, Pizza.WIDTH * 1.5, -Pizza.HEIGHT, "" + remainder, style));
             }
         }
     }
