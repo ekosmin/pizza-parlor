@@ -18,11 +18,15 @@ module Main {
             this.y = y;
 
             this.machine = new MultiplierMachine(multiplier, level, 0, 0);
+            this.add(this.machine);
+
             this.button = new MultiplierButton(this.machine, level,
                 this.machine.width/2 - PizzaMultiplier.BUTTON_OFFSET, this.machine.height/2);
 
-            this.add(this.machine);
             this.add(this.button);
+
+            this.add(new Pizza(level, multiplier, this.machine.width/2 - Pizza.WIDTH,
+                this.machine.height/4 - Pizza.HEIGHT, true));
         }
 
     }

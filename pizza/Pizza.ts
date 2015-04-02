@@ -11,24 +11,23 @@ module Main {
         public isServed: boolean = false;
         public amount: number;
 
-        private static START_POINT: Phaser.Point = new Phaser.Point(55, 415);
         private static MASK_OFFSET: Phaser.Point = new Phaser.Point(50, 31);
 
-        private static WIDTH: number = 90;
-        private static HEIGHT: number = 15;
+        public static WIDTH: number = 90;
+        public static HEIGHT: number = 15;
 
         // Used for dragging the full group
         mouseDragStart: Phaser.Point;
         groupDragStart: Phaser.Point;
         isDragged: boolean;
 
-        constructor(level: Level) {
+        constructor(level: Level, amount: number, x: number, y: number, isServed?: boolean) {
             super(level.game);
             this.level = level;
-
-            this.x = Pizza.START_POINT.x;
-            this.y = Pizza.START_POINT.y;
-            this.setAmount(1.5);
+            this.x = x;
+            this.y = y;
+            this.setAmount(amount);
+            this.isServed = isServed;
         }
 
         public update(): void {
