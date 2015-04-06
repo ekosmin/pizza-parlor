@@ -1,6 +1,7 @@
 ///<reference path="../phaser/typescript/phaser.d.ts"/>
 ///<reference path="../Level.ts"/>
 ///<reference path="../pizza/Pizza.ts"/>
+///<reference path="../Fraction.ts"/>
 module Main {
 
     export class PizzaMakerMachine extends Phaser.Sprite {
@@ -21,7 +22,7 @@ module Main {
                     return;
                 }
             }
-            var pizza: Pizza = new Pizza(this.level, 1, PizzaMakerMachine.START_POINT.x,
+            var pizza: Pizza = new Pizza(this.level, new Fraction(1), PizzaMakerMachine.START_POINT.x,
                 PizzaMakerMachine.START_POINT.y);
             this.level.pizzas.add(pizza);
         }

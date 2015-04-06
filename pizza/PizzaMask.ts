@@ -1,5 +1,5 @@
 ///<reference path="../phaser/typescript/phaser.d.ts"/>
-
+///<reference path="../Fraction.ts"/>
 module Main {
 
     export class PizzaMask extends Phaser.Graphics {
@@ -9,7 +9,7 @@ module Main {
         // This value helps calculate the offset for this behavior
         private static MIN_OFFSET_SLOPE = .16;
 
-        constructor(amount: number, level:Level, x:number, y:number) {
+        constructor(amount: Fraction, level:Level, x:number, y:number) {
             super(level.game, x, y);
 
             this.beginFill(0xff0000);
@@ -17,8 +17,8 @@ module Main {
             // The arc is calculated clockwise, but the mask is filled counterclockwise.
             // That is why we use smaller angles for larger amounts of pizza.
             // A conversion to radians is also necessary
-            var maxAngle: number = (1 - amount) * 2 * Math.PI;
-            this.arc(0, 0, 50, PizzaMask.MIN_OFFSET_SLOPE * amount, maxAngle, true);
+            var maxAngle: number = (1 - amount.toNumber()) * 2 * Math.PI;
+            this.arc(0, 0, 50, PizzaMask.MIN_OFFSET_SLOPE * amount.toNumber(), maxAngle, true);
         }
 
     }

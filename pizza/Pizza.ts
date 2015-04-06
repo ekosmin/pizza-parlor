@@ -9,7 +9,7 @@ module Main {
         private level: Level;
 
         public isServed: boolean = false;
-        public amount: number;
+        public amount: Fraction;
 
         private static MASK_OFFSET: Phaser.Point = new Phaser.Point(50, 31);
 
@@ -21,7 +21,7 @@ module Main {
         groupDragStart: Phaser.Point;
         isDragged: boolean;
 
-        constructor(level: Level, amount: number, x: number, y: number, isServed?: boolean) {
+        constructor(level: Level, amount: Fraction, x: number, y: number, isServed?: boolean) {
             super(level.game);
             this.level = level;
             this.x = x;
@@ -52,26 +52,26 @@ module Main {
             this.isDragged = false;
         }
 
-        public setAmount(amount: number): void {
+        public setAmount(amount: Fraction): void {
             this.amount = amount;
             this.removeAll(true);
 
-            var wholePizzas: number = Math.floor(amount);
+            var wholePizzas: number = Math.floor(amount.toNumber());
 
             for (var i: number = 0; i < wholePizzas; i++) {
                 this.add(new PizzaSprite(this.level, this, 0, i * -Pizza.HEIGHT));
             }
 
-            var style = { font: "15px Arial", fill: "#ffffff", align: "center" };
+            var style = { font: "15px Arial", fill: "#000000", align: "center" };
             this.add(new Phaser.Text(this.level.game, Pizza.WIDTH/2, wholePizzas * -Pizza.HEIGHT,
                 "" + wholePizzas, style));
 
-            var remainder: number = amount - wholePizzas;
-            if (remainder != 0) {
+            var remainder: Fraction = amount.subtract(new Fraction(wholePizzas));
+            if (remainder.toNumber() != 0) {
                 var fractionalPizza: PizzaSprite = new PizzaSprite(this.level, this, Pizza.WIDTH, 0);
                 this.add(fractionalPizza);
 
-                var mask: PizzaMask = new PizzaMask(amount - wholePizzas, this.level,
+                var mask: PizzaMask = new PizzaMask(remainder, this.level,
                     fractionalPizza.x + Pizza.MASK_OFFSET.x, Pizza.MASK_OFFSET.y);
                 fractionalPizza.mask = mask;
                 this.add(mask);

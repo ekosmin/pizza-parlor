@@ -1,6 +1,7 @@
 ///<reference path="../phaser/typescript/phaser.d.ts"/>
 ///<reference path="../pizza/PizzaSprite.ts"/>
 ///<reference path="../Level.ts"/>
+///<reference path="../Fraction.ts"/>
 ///<reference path="MultiplierMachine.ts"/>
 ///<reference path="MultiplierButton.ts"/>
 module Main {
@@ -12,7 +13,7 @@ module Main {
 
         private static BUTTON_OFFSET: number = 50;
 
-        constructor(multiplier: number, level: Level, x: number, y: number) {
+        constructor(multiplier: Fraction, level: Level, x: number, y: number) {
             super(level.game);
             this.x = x;
             this.y = y;

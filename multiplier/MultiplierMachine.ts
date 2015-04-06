@@ -1,5 +1,6 @@
 ///<reference path="../phaser/typescript/phaser.d.ts"/>
 ///<reference path="../Level.ts"/>
+///<reference path="../Fraction.ts"/>
 ///<reference path="../pizza/Pizza.ts"/>
 ///<reference path="MultiplierButton.ts"/>
 module Main {
@@ -8,9 +9,9 @@ module Main {
 
         private level: Level;
 
-        private multiplier: number;
+        private multiplier: Fraction;
 
-        constructor(multiplier: number, level:Level, x:number, y:number) {
+        constructor(multiplier: Fraction, level:Level, x:number, y:number) {
             super(level.game, x, y, 'multiplier');
             this.level = level;
             this.multiplier = multiplier;
@@ -23,7 +24,7 @@ module Main {
             for (var i: number = 0; i < this.level.pizzas.length; i++) {
                 var pizza: Pizza = this.level.pizzas.getAt(i);
                 if (this.level.physics.arcade.overlap(pizza, this)) {
-                    pizza.setAmount(pizza.amount * this.multiplier);
+                    pizza.setAmount(pizza.amount.multiply(this.multiplier));
                     pizza.x = this.parent.x + this.width - Pizza.WIDTH * 2;
                 }
             }

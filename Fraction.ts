@@ -109,6 +109,10 @@ module Main {
             return result.length > 0 ? result.join(' ') : 0;
         }
 
+        toNumber(): number {
+            return this.numerator/this.denominator;
+        }
+
         /* destructively rescale the fraction by some integral factor */
         rescale(factor) {
             this.numerator *= factor;
