@@ -76,13 +76,13 @@ module Main {
 
         constructor(numerator:number, denominator?:number) {
             /* double argument invocation */
-            if (numerator && denominator) {
+            if (!(typeof denominator === 'undefined')) {
                 if (typeof(numerator) === 'number' && typeof(denominator) === 'number') {
                     this.numerator = numerator;
                     this.denominator = denominator;
                 }
                 /* single-argument invocation */
-            } else if (!denominator) {
+            } else {
                 var num = numerator; // swap variable names for legibility
                 if (typeof(num) === 'number') {  // just a straight number init
                     this.numerator = num;
