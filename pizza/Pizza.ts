@@ -63,8 +63,10 @@ module Main {
             }
 
             var style = { font: "15px Arial", fill: "#000000", align: "center" };
-            this.add(new Phaser.Text(this.level.game, Pizza.WIDTH/2, wholePizzas * -Pizza.HEIGHT,
-                "" + wholePizzas, style));
+            if (wholePizzas != 0) {
+                this.add(new Phaser.Text(this.level.game, Pizza.WIDTH/2, wholePizzas * -Pizza.HEIGHT,
+                    "" + wholePizzas, style));
+            }
 
             var remainder: Fraction = amount.subtract(new Fraction(wholePizzas));
             if (remainder.toNumber() != 0) {
