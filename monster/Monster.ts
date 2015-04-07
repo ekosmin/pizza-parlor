@@ -6,6 +6,8 @@ module Main {
 
     export class Monster extends Phaser.Group {
 
+        public isServed: boolean = false;
+
         private level: Level;
 
         private monsterSprite: MonsterSprite;
@@ -25,6 +27,7 @@ module Main {
         public servePizza(pizza: Pizza): void {
             if (pizza.amount.equals(this.amount)) {
                 this.monsterSprite.eatPizza();
+                this.isServed = true;
             }
             this.level.chomp.play();
             pizza.destroy();
