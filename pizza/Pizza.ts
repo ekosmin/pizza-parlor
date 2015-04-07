@@ -43,9 +43,11 @@ module Main {
         }
 
         public onDragStart(): void {
-            this.mouseDragStart = new Phaser.Point(this.level.game.input.x, this.level.game.input.y);
-            this.groupDragStart = new Phaser.Point(this.x, this.y);
-            this.isDragged = true;
+            if (!this.isServed) {
+                this.mouseDragStart = new Phaser.Point(this.level.game.input.x, this.level.game.input.y);
+                this.groupDragStart = new Phaser.Point(this.x, this.y);
+                this.isDragged = true;
+            }
         }
 
         public onDragStop(): void {
