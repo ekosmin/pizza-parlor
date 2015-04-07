@@ -52,6 +52,14 @@ module Main {
 
         public onDragStop(): void {
             this.isDragged = false;
+
+            // is the pizza getting served to a monster?
+            for (var i: number = 0; i < this.level.monsters.length; i++) {
+                var monster: Monster = this.level.monsters.getAt(i);
+                if (this.level.physics.arcade.overlap(this, monster)) {
+                    monster.servePizza(this);
+                }
+            }
         }
 
         public setAmount(amount: Fraction): void {
