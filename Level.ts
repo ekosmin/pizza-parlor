@@ -29,12 +29,12 @@ module Main {
             this.levelGroup = this.game.add.group();
 
             this.levelGroup.add(new PizzaMaker(this, -100, 0));
-            this.levelGroup.add(new PizzaMultiplier(new Fraction(3, 2), this, 350, 50));
+            this.levelGroup.add(new PizzaMultiplier(new Fraction(2), this, 350, 50));
 
             this.monsters = new Phaser.Group(this.game);
             this.levelGroup.add(this.monsters);
-            this.monsters.add(new Monster(this, 2, new Fraction(1), 450, 350));
-            this.monsters.add(new Monster(this, 3, new Fraction(3, 2), 650, 350));
+            this.monsters.add(new Monster(this, 2, new Fraction(2), 450, 350));
+            this.monsters.add(new Monster(this, 4, new Fraction(4), 650, 350));
 
             this.pizzas = new Phaser.Group(this.game);
             this.levelGroup.add(this.pizzas);
