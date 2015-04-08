@@ -1,4 +1,4 @@
-///<reference path="../phaser/typescript/phaser.d.ts"/>
+///<reference path="phaser/typescript/phaser.d.ts"/>
 ///<reference path="Level.ts"/>
 module Main {
 
@@ -15,7 +15,7 @@ module Main {
         }
 
         private nextLevel(): void {
-            this.game.state.start('Level2', true, false, this.level.chomp);
+            this.game.state.start('Level', true, false, this.level.chomp);
         }
 
     }

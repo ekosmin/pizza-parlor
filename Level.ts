@@ -5,6 +5,7 @@
 ///<reference path="monster/Monster.ts"/>
 ///<reference path="Fraction.ts"/>
 ///<reference path="NextLevelButton.ts"/>
+///<reference path="LevelSettings.ts"/>
 module Main {
 
     export class Level extends Phaser.State {
@@ -28,13 +29,18 @@ module Main {
 
             this.levelGroup = this.game.add.group();
 
+            var settings:LevelSettings = LevelSettings.nextLevel();
+
             this.levelGroup.add(new PizzaMaker(this, -100, 0));
-            this.levelGroup.add(new PizzaMultiplier(new Fraction(2), this, 350, 50));
+            this.levelGroup.add(new PizzaMultiplier(settings.getMultipliers()[0], this, 350, 50));
 
             this.monsters = new Phaser.Group(this.game);
             this.levelGroup.add(this.monsters);
-            this.monsters.add(new Monster(this, 2, new Fraction(2), 450, 350));
-            this.monsters.add(new Monster(this, 4, new Fraction(4), 650, 350));
+
+            var amount1: Fraction = settings.getBasePizzaAmount().multiply(new Fraction(settings.getMonsters()[0]));
+            var amount2: Fraction = settings.getBasePizzaAmount().multiply(new Fraction(settings.getMonsters()[1]));
+            this.monsters.add(new Monster(this, settings.getMonsters()[0], amount1, 450, 350));
+            this.monsters.add(new Monster(this, settings.getMonsters()[1], amount2, 650, 350));
 
             this.pizzas = new Phaser.Group(this.game);
             this.levelGroup.add(this.pizzas);
