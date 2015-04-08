@@ -25,7 +25,6 @@ module Main {
                 var pizza: Pizza = this.level.pizzas.getAt(i);
                 if (this.level.physics.arcade.overlap(pizza, this)) {
                     pizza.setAmount(pizza.amount.multiply(this.multiplier));
-                    pizza.x = this.parent.x + this.width - Pizza.WIDTH * 2;
                 }
             }
         }

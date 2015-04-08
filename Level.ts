@@ -31,8 +31,9 @@ module Main {
 
             var settings:LevelSettings = LevelSettings.nextLevel();
 
-            this.levelGroup.add(new PizzaMaker(this, -100, 0));
-            this.levelGroup.add(new PizzaMultiplier(settings.getMultipliers()[0], this, 350, 50));
+            this.levelGroup.add(new PizzaMaker(this, -125, 0));
+            this.levelGroup.add(new PizzaMultiplier(settings.getMultipliers()[0], this, 225, 50));
+            this.levelGroup.add(new PizzaMultiplier(settings.getMultipliers()[0], this, 700, 50));
 
             this.monsters = new Phaser.Group(this.game);
             this.levelGroup.add(this.monsters);
