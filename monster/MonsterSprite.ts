@@ -10,7 +10,7 @@ module Main {
         private heads: number;
 
         constructor(level:Level, heads: number) {
-            super(level.game, 0, 0, MonsterSprite.chooseSprite(heads, false), 0);
+            super(level.game, 0, 0, 'monsterSheet', MonsterSprite.chooseSprite(heads, false));
             this.heads = heads;
             this.level = level;
 
@@ -18,12 +18,12 @@ module Main {
         }
 
         public eatPizza(): void {
-            this.loadTexture(MonsterSprite.chooseSprite(this.heads, true));
+            this.loadTexture("monsterSheet", MonsterSprite.chooseSprite(this.heads, true));
         }
 
         private static chooseSprite(heads: number, isServed: boolean): string {
             var assetSuffix: string = isServed ? "happy" : "sad";
-            return heads + "head_" + assetSuffix;
+            return heads + "head_" + assetSuffix + ".png";
         }
     }
 }

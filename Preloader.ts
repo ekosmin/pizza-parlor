@@ -13,17 +13,13 @@ module Main {
             this.load.image('multiplierButton', 'assets/multiplierButton.png');
             this.load.image('makerButton', 'assets/makerButton.png');
 
-            this.load.image('1head_sad', 'assets/monsters/sad/1head.png');
-            this.load.image('2head_sad', 'assets/monsters/sad/2head.png');
-            this.load.image('3head_sad', 'assets/monsters/sad/3head.png');
-            this.load.image('4head_sad', 'assets/monsters/sad/4head.png');
-
-            this.load.image('1head_happy', 'assets/monsters/happy/1head.png');
-            this.load.image('2head_happy', 'assets/monsters/happy/2head.png');
-            this.load.image('3head_happy', 'assets/monsters/happy/3head.png');
-            this.load.image('4head_happy', 'assets/monsters/happy/4head.png');
-
             this.load.audio('chomp', 'assets/chomp.wav');
+
+            this.game.load.atlasJSONHash(
+                'monsterSheet',
+                'assets/monsterSheet.png',
+                'assets/monsterSheet.json'
+            );
         }
 
         create() {
