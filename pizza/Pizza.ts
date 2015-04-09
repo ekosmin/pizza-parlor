@@ -91,5 +91,11 @@ module Main {
                 this.add(new Phaser.Text(this.level.game, Pizza.WIDTH * 1.5, -Pizza.HEIGHT, "" + remainder, style));
             }
         }
+
+        public serve(monster: Monster): void {
+            this.x = monster.x - this.width;
+            this.y = monster.y + monster.height/2;
+            this.isServed = true;
+        }
     }
 }

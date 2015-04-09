@@ -6,31 +6,32 @@ module Main {
 
     export class Monster extends Phaser.Group {
 
-        public isServed: boolean = false;
-
         private level: Level;
 
         private monsterSprite: MonsterSprite;
-        private amount: Fraction;
+        private pizzaHistory: Pizza;
 
         constructor(level:Level, heads: number, amount: Fraction, x:number, y:number) {
             super(level.game);
             this.level = level;
-            this.amount = amount;
             this.x = x;
             this.y = y;
 
-            this.monsterSprite = new MonsterSprite(level, heads);
+            this.monsterSprite = new MonsterSprite(level, amount, heads);
             this.add(this.monsterSprite);
         }
 
         public servePizza(pizza: Pizza): void {
-            if (pizza.amount.equals(this.amount)) {
-                this.monsterSprite.eatPizza();
-                this.isServed = true;
+            if (!this.monsterSprite.isServed) {
+                this.monsterSprite.eatPizza(pizza);
+
+                if (this.pizzaHistory) {
+                    this.pizzaHistory.destroy();
+                }
+                this.pizzaHistory = pizza;
+
+                pizza.serve(this);
             }
-            this.level.chomp.play();
-            pizza.destroy();
         }
 
     }

@@ -41,7 +41,7 @@ module Main {
             var amount1: Fraction = settings.getBasePizzaAmount().multiply(new Fraction(settings.getMonsters()[0]));
             var amount2: Fraction = settings.getBasePizzaAmount().multiply(new Fraction(settings.getMonsters()[1]));
             this.monsters.add(new Monster(this, settings.getMonsters()[0], amount1, 450, 350));
-            this.monsters.add(new Monster(this, settings.getMonsters()[1], amount2, 650, 350));
+            this.monsters.add(new Monster(this, settings.getMonsters()[1], amount2, 800, 350));
 
             this.pizzas = new Phaser.Group(this.game);
             this.levelGroup.add(this.pizzas);
@@ -49,11 +49,11 @@ module Main {
 
         update() {
             for (var i: number = 0; i < this.monsters.length; i++) {
-                if (!this.monsters.getAt(i).isServed) {
+                if (!this.monsters.getAt(i).monsterSprite.isServed) {
                     return;
                 }
             }
-            this.levelGroup.add(new NextLevelButton(this, 800, 400));
+            this.levelGroup.add(new NextLevelButton(this, 950, 400));
         }
 
     }
