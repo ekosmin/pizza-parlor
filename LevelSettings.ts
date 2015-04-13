@@ -8,7 +8,8 @@ module Main {
 
         private basePizzaAmount: Fraction;
         private multipliers: Fraction[];
-        private monsters: number[];
+        private heads: number[];
+        private isServed: boolean[];
 
         private level: number = -1; // so the first level is 0
 
@@ -27,14 +28,20 @@ module Main {
             return this.multipliers;
         }
 
-        public getMonsters(): number[] {
-            return this.monsters;
+        public getHeads(): number[] {
+            return this.heads;
         }
 
-        private advanceLevel(basePizzaAmount: Fraction, multipliers: Fraction[], monsters: number[]): LevelSettings {
+        public getServed(): boolean[] {
+            return this.isServed;
+        }
+
+        private advanceLevel(basePizzaAmount: Fraction, multipliers: Fraction[], heads: number[],
+                             isServed: boolean[]): LevelSettings {
             this.basePizzaAmount = basePizzaAmount;
             this.multipliers = multipliers;
-            this.monsters = monsters;
+            this.heads = heads;
+            this.isServed = isServed;
 
             return this;
         }
@@ -51,14 +58,16 @@ module Main {
             settings.level += 1;
             switch (settings.level) {
                 case 0:
-                    return settings.advanceLevel(new Fraction(1),
-                                                [new Fraction(2)],
-                                                [2, 4]);
+                    return settings.advanceLevel(new Fraction(1, 4),
+                                                [new Fraction(1, 2)],
+                                                [2, 4],
+                                                [true, false]);
                 case 1:
                 default:
                     return settings.advanceLevel(new Fraction(1, 2),
                                                 [new Fraction(3,2)],
-                                                [2, 3]);
+                                                [2, 3],
+                                                [false, true]);
             }
         }
 

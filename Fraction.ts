@@ -239,6 +239,10 @@ module Main {
             return this;
         }
 
+        public isWhole() {
+            return !(this.toNumber() - Math.floor(this.toNumber()) > 0);
+        }
+
 
         /* Takes two numbers and returns their greatest common factor.
          */

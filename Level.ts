@@ -15,6 +15,7 @@ module Main {
 
         pizzas: Phaser.Group;
         monsters: Phaser.Group;
+        machines: Phaser.Group;
 
         chomp: Phaser.Sound;
 
@@ -36,18 +37,19 @@ module Main {
             this.background.height = this.game.world.height;
 
             this.levelGroup = this.game.add.group();
+            this.monsters = new Phaser.Group(this.game);
+            this.pizzas = new Phaser.Group(this.game);
+            this.machines = new Phaser.Group(this.game);
+
+            this.levelGroup.add(this.machines);
+            this.levelGroup.add(this.monsters);
+            this.levelGroup.add(this.pizzas);
 
             var settings:LevelSettings = LevelSettings.nextLevel();
 
-            this.levelGroup.add(new PizzaMaker(this, Level.MAKER_POINT.x, Level.MAKER_POINT.y));
+            this.machines.add(new PizzaMaker(this, Level.MAKER_POINT.x, Level.MAKER_POINT.y));
             this.addMultipliers(settings.getMultipliers());
-
-            this.monsters = new Phaser.Group(this.game);
-            this.levelGroup.add(this.monsters);
-            this.addMonsters(settings.getMonsters(), settings.getBasePizzaAmount());
-
-            this.pizzas = new Phaser.Group(this.game);
-            this.levelGroup.add(this.pizzas);
+            this.addMonsters(settings.getHeads(), settings.getServed(), settings.getBasePizzaAmount());
         }
 
         update() {
@@ -61,22 +63,29 @@ module Main {
 
         private addMultipliers(multipliers: Fraction[]) {
             for (var i: number = 0; i < multipliers.length; i++) {
-                this.levelGroup.add(new PizzaMultiplier(multipliers[i],
-                                                        this,
-                                                        Level.MULTIPLIER_START_POINT.x + i * Level.MULTIPLIER_OFFSET,
-                                                        Level.MULTIPLIER_START_POINT.y));
+                this.machines.add(new PizzaMultiplier(multipliers[i],
+                                                      this,
+                                                      Level.MULTIPLIER_START_POINT.x + i * Level.MULTIPLIER_OFFSET,
+                                                      Level.MULTIPLIER_START_POINT.y));
             }
         }
 
-        private addMonsters(heads: number[], basePizzaAmount: Fraction) {
+        private addMonsters(heads: number[], isServed: boolean[], basePizzaAmount: Fraction) {
             for (var i: number = 0; i < heads.length; i++) {
                 var headNumber: number = heads[i];
                 var amount: Fraction = basePizzaAmount.multiply(new Fraction(headNumber));
-                this.monsters.add(new Monster(this,
-                                              headNumber,
-                                              amount,
-                                              Level.MONSTER_START_POINT.x + i * Level.MONSTER_OFFSET,
-                                              Level.MONSTER_START_POINT.y));
+                var monster = new Monster(this,
+                    headNumber,
+                    amount,
+                    Level.MONSTER_START_POINT.x + i * Level.MONSTER_OFFSET,
+                    Level.MONSTER_START_POINT.y);
+                this.monsters.add(monster);
+
+                if (isServed[i]) {
+                    var pizza = new Pizza(this, amount, monster.x, monster.y, false);
+                    this.pizzas.add(pizza);
+                    monster.servePizza(pizza);
+                }
             }
         }
 

@@ -13,8 +13,8 @@ module Main {
 
         private static MASK_OFFSET: Phaser.Point = new Phaser.Point(50, 31);
 
-        public static WIDTH: number = 90;
-        public static HEIGHT: number = 15;
+        private static WIDTH: number = 90;
+        private static HEIGHT: number = 15;
 
         // Used for dragging the full group
         mouseDragStart: Phaser.Point;
@@ -62,6 +62,13 @@ module Main {
             }
         }
 
+        // XXX: Hack to avoid calling this.width during setup, which causes a masking error.
+        // Reproduce by replacing the body of this method with "return this.width"
+        public getSafeWidth(): number {
+            var oneStack = this.amount.isWhole() || this.amount.toNumber() < 1;
+            return oneStack ? Pizza.WIDTH : Pizza.WIDTH * 2;
+        }
+
         public setAmount(amount: Fraction): void {
             this.amount = amount;
             this.removeAll(true);
@@ -80,7 +87,8 @@ module Main {
 
             var remainder: Fraction = amount.subtract(new Fraction(wholePizzas));
             if (remainder.toNumber() != 0) {
-                var fractionalPizza: PizzaSprite = new PizzaSprite(this.level, this, Pizza.WIDTH, 0);
+                var xOffset: number = amount.toNumber() < 1 ? 0 : Pizza.WIDTH; // No offset if no whole pizza stack
+                var fractionalPizza: PizzaSprite = new PizzaSprite(this.level, this, xOffset, 0);
                 this.add(fractionalPizza);
 
                 var mask: PizzaMask = new PizzaMask(remainder, this.level,
@@ -88,12 +96,13 @@ module Main {
                 fractionalPizza.mask = mask;
                 this.add(mask);
 
-                this.add(new Phaser.Text(this.level.game, Pizza.WIDTH * 1.5, -Pizza.HEIGHT, "" + remainder, style));
+                this.add(new Phaser.Text(this.level.game, xOffset + Pizza.WIDTH * .5, -Pizza.HEIGHT, "" + remainder,
+                    style));
             }
         }
 
         public serve(monster: Monster): void {
-            this.x = monster.x - this.width;
+            this.x = monster.x - this.getSafeWidth();
             this.y = monster.y + monster.height/2;
             this.isServed = true;
         }

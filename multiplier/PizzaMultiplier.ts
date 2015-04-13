@@ -27,8 +27,11 @@ module Main {
 
             this.add(this.button);
 
-            this.add(new Pizza(level, multiplier, this.machine.width * 3/4 - PizzaMultiplier.PIZZA_OFFSET,
-                this.machine.height/4 - Pizza.HEIGHT, true));
+            var pizza = new Pizza(level, multiplier, 0,
+                this.machine.height / 4, true);
+            // place it in the middle of the second half of the machine
+            pizza.x = this.machine.width / 2 + (this.machine.width / 2 - pizza.getSafeWidth()) / 2;
+            this.add(pizza);
         }
 
     }
