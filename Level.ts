@@ -10,14 +10,15 @@ module Main {
 
     export class Level extends Phaser.State {
 
-        background: Phaser.Sprite;
-        levelGroup: Phaser.Group;
+        public pizzas: Phaser.Group;
+        public monsters: Phaser.Group;
+        public machines: Phaser.Group;
 
-        pizzas: Phaser.Group;
-        monsters: Phaser.Group;
-        machines: Phaser.Group;
+        public chomp: Phaser.Sound;
 
-        chomp: Phaser.Sound;
+        private background: Phaser.Sprite;
+        private levelGroup: Phaser.Group;
+        private nextLevelButton: NextLevelButton;
 
         private static NEXT_BUTTON_POINT: Phaser.Point = new Phaser.Point(950, 400);
         private static MAKER_POINT: Phaser.Point = new Phaser.Point(-125, 0);
@@ -58,7 +59,10 @@ module Main {
                     return;
                 }
             }
-            this.levelGroup.add(new NextLevelButton(this, Level.NEXT_BUTTON_POINT.x, Level.NEXT_BUTTON_POINT.y));
+            if (!this.nextLevelButton) {
+                this.nextLevelButton = new NextLevelButton(this, Level.NEXT_BUTTON_POINT.x, Level.NEXT_BUTTON_POINT.y);
+                this.levelGroup.add(this.nextLevelButton);
+            }
         }
 
         private addMultipliers(multipliers: Fraction[]) {
