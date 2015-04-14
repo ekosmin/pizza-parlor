@@ -84,7 +84,7 @@ module Main {
                 if (isServed[i]) {
                     var pizza = new Pizza(this, amount, monster.x, monster.y, false);
                     this.pizzas.add(pizza);
-                    monster.servePizza(pizza);
+                    monster.servePizza(pizza, false);
                 }
             }
         }

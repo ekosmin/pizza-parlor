@@ -21,12 +21,15 @@ module Main {
             this.level.game.physics.enable(this, Phaser.Physics.ARCADE);
         }
 
-        public eatPizza(pizza: Pizza): void {
+        public eatPizza(pizza: Pizza, doChomp: boolean): void {
             if (pizza.amount.equals(this.amount)) {
                 this.loadTexture("monsterSheet", MonsterSprite.chooseSprite(this.heads, true));
                 this.isServed = true;
             }
-            this.level.chomp.play();
+
+            if (doChomp) {
+                this.level.chomp.play();
+            }
         }
 
         private static chooseSprite(heads: number, isServed: boolean): string {

@@ -21,9 +21,9 @@ module Main {
             this.add(this.monsterSprite);
         }
 
-        public servePizza(pizza: Pizza): void {
+        public servePizza(pizza: Pizza, doChomp: boolean): void {
             if (!this.monsterSprite.isServed) {
-                this.monsterSprite.eatPizza(pizza);
+                this.monsterSprite.eatPizza(pizza, doChomp);
 
                 if (this.pizzaHistory) {
                     this.pizzaHistory.destroy();
