@@ -11,8 +11,11 @@ module Main {
         public isServed: boolean = false;
         public amount: Fraction;
 
+        public static MAX_WIDTH: number = 190;
+
         private static MASK_OFFSET: Phaser.Point = new Phaser.Point(50, 31);
 
+        // Values for a single Pizza, for placement within the group
         private static WIDTH: number = 90;
         private static HEIGHT: number = 15;
 

@@ -60,8 +60,8 @@ module Main {
                 case 0:
                     return settings.advanceLevel(new Fraction(1, 4),
                                                 [new Fraction(1, 2)],
-                                                [2, 4],
-                                                [true, false]);
+                                                [4, 4, 2],
+                                                [true, false, false]);
                 case 1:
                 default:
                     return settings.advanceLevel(new Fraction(1, 2),

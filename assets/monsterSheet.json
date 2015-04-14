@@ -1,76 +1,76 @@
 {"frames": {
 
-"1head_happy.png":
+"happy/1head.png":
 {
-	"frame": {"x":77,"y":134,"w":48,"h":96},
+	"frame": {"x":76,"y":532,"w":48,"h":96},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":25,"y":25,"w":48,"h":96},
-	"sourceSize": {"w":111,"h":161}
+	"spriteSourceSize": {"x":26,"y":2,"w":48,"h":96},
+	"sourceSize": {"w":100,"h":100}
 },
-"1head_sad.png":
+"happy/2head.png":
 {
-	"frame": {"x":77,"y":232,"w":48,"h":96},
+	"frame": {"x":79,"y":2,"w":47,"h":132},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":25,"y":25,"w":48,"h":96},
-	"sourceSize": {"w":111,"h":161}
+	"spriteSourceSize": {"x":26,"y":0,"w":47,"h":132},
+	"sourceSize": {"w":99,"h":132}
 },
-"2head_happy.png":
+"happy/3head.png":
 {
-	"frame": {"x":77,"y":2,"w":48,"h":130},
+	"frame": {"x":2,"y":296,"w":73,"h":128},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":25,"y":9,"w":48,"h":130},
-	"sourceSize": {"w":111,"h":161}
+	"spriteSourceSize": {"x":13,"y":0,"w":73,"h":128},
+	"sourceSize": {"w":99,"h":128}
 },
-"2head_sad.png":
+"happy/4head.png":
 {
-	"frame": {"x":77,"y":330,"w":47,"h":131},
+	"frame": {"x":2,"y":426,"w":72,"h":159},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":18,"y":12,"w":47,"h":131},
-	"sourceSize": {"w":99,"h":177}
+	"spriteSourceSize": {"x":19,"y":0,"w":72,"h":159},
+	"sourceSize": {"w":110,"h":159}
 },
-"3head_happy.png":
+"sad/1head.png":
 {
-	"frame": {"x":2,"y":456,"w":72,"h":127},
+	"frame": {"x":76,"y":432,"w":50,"h":98},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":12,"w":72,"h":127},
-	"sourceSize": {"w":111,"h":161}
+	"spriteSourceSize": {"x":25,"y":1,"w":50,"h":98},
+	"sourceSize": {"w":100,"h":100}
 },
-"3head_sad.png":
+"sad/2head.png":
 {
-	"frame": {"x":2,"y":325,"w":73,"h":129},
+	"frame": {"x":77,"y":296,"w":49,"h":134},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":13,"w":73,"h":129},
-	"sourceSize": {"w":99,"h":160}
+	"spriteSourceSize": {"x":25,"y":0,"w":49,"h":134},
+	"sourceSize": {"w":99,"h":134}
 },
-"4head_happy.png":
+"sad/3head.png":
 {
-	"frame": {"x":2,"y":165,"w":73,"h":158},
+	"frame": {"x":2,"y":165,"w":75,"h":129},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":19,"y":1,"w":73,"h":158},
-	"sourceSize": {"w":111,"h":161}
+	"spriteSourceSize": {"x":12,"y":2,"w":75,"h":129},
+	"sourceSize": {"w":99,"h":133}
 },
-"4head_sad.png":
+"sad/4head.png":
 {
-	"frame": {"x":2,"y":2,"w":73,"h":161},
+	"frame": {"x":2,"y":2,"w":75,"h":161},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":15,"y":12,"w":73,"h":161},
-	"sourceSize": {"w":99,"h":195}
+	"spriteSourceSize": {"x":20,"y":2,"w":75,"h":161},
+	"sourceSize": {"w":115,"h":165}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "monsterSheet.png",
 	"format": "RGBA8888",
-	"size": {"w":127,"h":585},
+	"size": {"w":128,"h":630},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:23b94957bc1f12bd5a751d9496f69f95:913ad38a6174fbb04a7d51c29cd11dea:c041c8f83f7f3c1dee310d848fa55482$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9976828711ee887a004d5a5b888edac5:4e0d4abd22e3837851b4d5b0d0ddccfe:c041c8f83f7f3c1dee310d848fa55482$"
 }
 }

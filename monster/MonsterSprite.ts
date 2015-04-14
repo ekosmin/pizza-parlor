@@ -33,8 +33,8 @@ module Main {
         }
 
         private static chooseSprite(heads: number, isServed: boolean): string {
-            var assetSuffix: string = isServed ? "happy" : "sad";
-            return heads + "head_" + assetSuffix + ".png";
+            var assetPrefix: string = isServed ? "happy" : "sad";
+            return assetPrefix + "/" + heads + "head" + ".png";
         }
     }
 }

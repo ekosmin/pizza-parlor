@@ -16,6 +16,7 @@ module Main {
 
         private nextLevel(): void {
             this.game.state.start('Level', true, false, this.level.chomp);
+            this.level.nextLevelButton = null;
         }
 
     }
